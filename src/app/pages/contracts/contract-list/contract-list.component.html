@@ -1,1 +1,42 @@
-<p>contract-list works!</p>
+<div class="contract-list-container">
+    <div class="contract-list-header">
+        <h1>Contratos</h1>
+        <app-button (onClick)="createNewContract()">Novo Contrato</app-button>
+    </div>
+
+    <app-card>
+        <table class="contract-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Cliente</th>
+                    <th>Data</th>
+                    <th>Valor</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (contract of contracts; track $index) {
+                <tr>
+                    <td>{{contract.id}}</td>
+                    <td>{{contract.clientName}}</td>
+                    <td>{{contract.startDate | date:'dd/MM/yyyy'}}</td>
+                    <td>{{contract.value | currency:'BRL'}}</td>
+                    <td class="actions-cell">
+                        <app-button (onClick)="addItemsToContract(contract)" variant="secondary" size="sm">
+                            Incluir Item
+                        </app-button>
+                        <app-button (onClick)="viewContract(contract)" variant="primary" size="sm">
+                            Visualizar
+                        </app-button>
+                    </td>
+                </tr>
+                } @empty {
+                <tr>
+                    <td colspan="5" class="empty-state">Nenhum contrato encontrado.</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </app-card>
+</div>

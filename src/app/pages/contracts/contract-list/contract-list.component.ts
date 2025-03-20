@@ -1,12 +1,48 @@
-import { Component } from '@angular/core';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ContractService } from '@core/application/services/contract.service';
+import { Contract } from '@core/domain/models/contract.model';
+import { ButtonComponent } from '@shared/components/ui/button/button.component';
+import { CardComponent } from '@shared/components/ui/card/card.component';
+
 
 @Component({
   selector: 'app-contract-list',
   standalone: true,
-  imports: [],
+  imports: [ButtonComponent, CardComponent, CurrencyPipe, DatePipe],
   templateUrl: './contract-list.component.html',
   styleUrl: './contract-list.component.scss'
 })
-export class ContractListComponent {
+export class ContractListComponent implements OnInit {
 
+
+  private router = inject(Router);
+  private contractService = inject(ContractService);
+
+  protected contracts: Contract[] = [];
+
+  ngOnInit(): void {
+    this.loadContracts();
+  }
+
+  private loadContracts() {
+    this.contractService.getContracts().subscribe(contracts => {
+      this.contracts = contracts;
+    });
+  }
+
+  protected createNewContract() {
+    // Serviço do Workflow para Novo Contrato
+    this.router.navigate(['/workflow']);
+  }
+
+  protected addItemsToContract(contract: Contract) {
+    // Serviço do Workflow para Adicionar Item
+    this.router.navigate(['/workflow']);
+  }
+
+  protected viewContract(contract: Contract) {
+    this.router.navigate(['/contracts', contract.id]);
+  }
 }

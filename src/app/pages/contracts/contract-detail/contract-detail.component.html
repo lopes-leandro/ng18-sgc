@@ -1,0 +1,89 @@
+<div class="contract-detail-container">
+    <div class="contract-detail-header">
+        <h1>Detalhes do Contrato</h1>
+        <div class="header-actions">
+            <app-button (onClick)="goBack()">Voltar</app-button>
+            <app-button (onClick)="addItems()">Adicionar Items</app-button>
+        </div>
+    </div>
+
+    @if (contract) {
+        <app-card title="Informações do Contrato">
+            <div class="contract-info">
+                <div class="info-row">
+                    <div class="info-label">ID do Contrato:</div>
+                    <div class="info-value">{{contract.id}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Nome do Cliente:</div>
+                    <div class="info-value">{{contract.clientName}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Tipo de Contrato:</div>
+                    <div class="info-value">{{ getContractTypeLabel(contract.contractType)}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Data de Início:</div>
+                    <div class="info-value">{{contract.startDate | date:'dd/MM/yyyy'}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Valor Total:</div>
+                    <div class="info-value">{{contract.value | currency:'BRL'}}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Status:</div>
+                    <div class="info-value">{{getStatusLabel(contract.status)}}</div>
+                </div>
+            </div>
+        </app-card>
+
+        <app-card title="Items do Contrato" class="mt-4">
+            @if (contract.items && contract.items.length > 0) {
+                <table class="items-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Preço Unitário</th>
+                            <th>Preço Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (item of contract.items; track item.id) {
+                            <tr>
+                                <td>{{item.description}}</td>
+                                <td>{{item.quantity}}</td>
+                                <td>{{item.unitPrice | currency:'BRL' }}</td>
+                                <td>{{item.totalPrice | currency:'BRL' }}</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="3" class="text-right">Total:</td>
+                            <td>{{getTotalItemsValue() | currency:'BRL' }}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            } @else {
+                <div class="empty-state">
+                    <p>Este contrato não possui items cadastrados.</p>
+                    <app-button (onClick)="addItems()" variant="primary">Adicionar Items</app-button>
+                </div>
+            }
+        </app-card>
+    } @else {
+        <app-card>
+            <div>
+                @if (loading) {
+                    <p>Carregando detalhes do contrato...</p>
+                } @else {
+                    <p>Contrato não encontrado.</p>
+                    <app-button (onClick)="goBack()" variant="primary">Voltar para Contratos</app-button>
+                }
+            </div>
+        </app-card>
+    }
+
+</div>

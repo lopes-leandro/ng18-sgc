@@ -26,6 +26,8 @@
     "baseUrl": "./",
     "paths": {
       "@pages/*": ["src/app/pages/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@core/*": ["src/app/core/*"],
     }
   },
   "angularCompilerOptions": {

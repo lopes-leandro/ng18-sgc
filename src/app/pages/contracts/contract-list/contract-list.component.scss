@@ -1,0 +1,31 @@
+.contract-list-container {
+    padding: 20px;
+}
+.contract-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.contract-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.contract-table th, .contract-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+.contract-table th {
+    background-color: #f5f5f5;
+    font-weight: 500;
+}
+.empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #6c757d;
+}
+.actions-cell {
+    display: flex;
+    gap: 8px;
+}
