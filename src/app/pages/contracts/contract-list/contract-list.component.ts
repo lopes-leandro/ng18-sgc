@@ -2,7 +2,9 @@ import { CurrencyPipe, DatePipe } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContractService } from '@core/application/services/contract.service';
+import { WorkflowService } from '@core/application/services/workflow.service';
 import { Contract } from '@core/domain/models/contract.model';
+import { WorkflowType } from '@core/domain/models/workflow.model';
 import { ButtonComponent } from '@shared/components/ui/button/button.component';
 import { CardComponent } from '@shared/components/ui/card/card.component';
 
@@ -19,6 +21,7 @@ export class ContractListComponent implements OnInit {
 
   private router = inject(Router);
   private contractService = inject(ContractService);
+  private workflowService = inject(WorkflowService);
 
   protected contracts: Contract[] = [];
 
@@ -34,11 +37,17 @@ export class ContractListComponent implements OnInit {
 
   protected createNewContract() {
     // Serviço do Workflow para Novo Contrato
+    this.workflowService.startWorkflow(WorkflowType.NEW_CONTRACT);
+
     this.router.navigate(['/workflow']);
   }
 
   protected addItemsToContract(contract: Contract) {
     // Serviço do Workflow para Adicionar Item
+    this.workflowService.startWorkflow(WorkflowType.ADD_ITEMS, {
+      contractId: contract.id,
+      contractName: contract.clientName
+    })
     this.router.navigate(['/workflow']);
   }
 
