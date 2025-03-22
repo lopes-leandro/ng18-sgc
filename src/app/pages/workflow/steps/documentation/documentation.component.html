@@ -1,0 +1,29 @@
+<div class="step-container">
+    <h3>Documentação</h3>
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="document-checklist">
+            <h4>Documentos Requiridos</h4>
+
+            @for (doc of documentList; track $index; let i = $index) {
+            <div class="document-item">
+                <label class="checkbox-label">
+                    <input type="checkbox" [formControlName]="'doc_'+i">
+                    {{doc.name}}
+                </label>
+                <p class="dpcument-description">{{doc.description}}</p>
+            </div>
+            }
+        </div>
+
+        <app-form-field label="Detalhes Adicionais" id="documentNotes" [control]="documentNotes">
+            <textarea id="" rows="4" formControlName="documentNotes" class="form-control"></textarea>
+        </app-form-field>
+
+        <div>
+            <app-button type="button" variant="secondary" (onClick)="onBack()">Voltar</app-button>
+            <app-button type="submit">Continuar</app-button>
+        </div>
+    </form>
+
+</div>

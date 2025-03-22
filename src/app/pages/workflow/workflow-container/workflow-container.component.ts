@@ -9,6 +9,7 @@ import { CardComponent } from '@shared/components/ui/card/card.component';
 /**Formulários da jornada do usuário */
 import { NewContractComponent } from '../steps/new-contract/new-contract.component';
 import { CommercialConditionsComponent } from '../steps/commercial-conditions/commercial-conditions.component';
+import { DocumentationComponent } from '../steps/documentation/documentation.component';
 
 @Component({
   selector: 'app-workflow-container',
@@ -48,7 +49,7 @@ export class WorkflowContainerComponent implements OnInit {
       steps: [
         {id: 'step-a', component: NewContractComponent, label: 'Informações Básicas'},
         {id: 'step-b', component: CommercialConditionsComponent, label: 'Condições Contratuais'},
-        {id: 'step-c', component: '', label: 'Documentação'},
+        {id: 'step-c', component: DocumentationComponent, label: 'Documentação'},
         {id: 'summary', component: '', label: 'Resumo'},
       ]
     });

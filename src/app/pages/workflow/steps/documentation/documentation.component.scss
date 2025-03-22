@@ -1,0 +1,56 @@
+.step-container {
+    width: 100%;
+}
+
+.document-checkList {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+}
+
+.document-checkList h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.document-item {
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.document-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    padding-bottom: 0;
+}
+
+.checkbox-label {
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.document-description {
+    margin: 5px 0 0 24px;
+    font-size: 14px;
+    color: #666;
+}
+
+.form-control {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
