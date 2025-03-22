@@ -1,0 +1,17 @@
+<div class="form-field">
+    <label [for]="id()">{{label()}}</label>
+    <ng-content></ng-content>
+    @if (control() && control()?.invalid && control()?.touched) {
+        @if (control()?.errors?.['required']) {
+            <span class="error-message">{{label()}} é obrigatório.</span>
+        }
+        @if (control()?.errors?.['email']) {
+            <span class="error-message">Email inválido</span>
+        }
+        @if (control()?.errors?.['minlenght']) {
+            <span class="error-message">
+                {{label()}} deve ter pelo menos {{control()?.errors?.['minlength'].requiredLentgth}} caracteres
+            </span>
+        }
+    }
+</div>

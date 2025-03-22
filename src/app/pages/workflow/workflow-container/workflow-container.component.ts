@@ -6,6 +6,9 @@ import { WorkflowService } from '@core/application/services/workflow.service';
 import { WorkflowType } from '@core/domain/models/workflow.model';
 import { ButtonComponent } from '@shared/components/ui/button/button.component';
 import { CardComponent } from '@shared/components/ui/card/card.component';
+/**Formulários da jornada do usuário */
+import { NewContractComponent } from '../steps/new-contract/new-contract.component';
+import { CommercialConditionsComponent } from '../steps/commercial-conditions/commercial-conditions.component';
 
 @Component({
   selector: 'app-workflow-container',
@@ -43,8 +46,8 @@ export class WorkflowContainerComponent implements OnInit {
       type: WorkflowType.NEW_CONTRACT,
       title: 'Novo Contrato',
       steps: [
-        {id: 'step-a', component: '', label: 'Informações Básicas'},
-        {id: 'step-b', component: '', label: 'Condições Contratuais'},
+        {id: 'step-a', component: NewContractComponent, label: 'Informações Básicas'},
+        {id: 'step-b', component: CommercialConditionsComponent, label: 'Condições Contratuais'},
         {id: 'step-c', component: '', label: 'Documentação'},
         {id: 'summary', component: '', label: 'Resumo'},
       ]

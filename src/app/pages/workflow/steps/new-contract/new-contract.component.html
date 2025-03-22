@@ -1,0 +1,26 @@
+<div class="step-container">
+    <h3>Informações Básicas do Contrato</h3>
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <app-form-field label="Nome do Cliente" id="clientName" [control]="clientNameControl">
+            <input type="text" id="clientName" formControlName="clientName" class="form-control">
+        </app-form-field>
+
+        <app-form-field label="Tipo de Contrato" id="contractType" [control]="contractTypeControl">
+            <select id="contractType" formControlName="contractType" class="form-control">
+                <option value="">Selecione</option>
+                <option value="service">Serviço</option>
+                <option value="product">Produto</option>
+                <option value="mixed">Misto</option>
+            </select>
+        </app-form-field>
+
+        <app-form-field label="Data de Início" id="startDate" [control]="startDateControl">
+            <input type="date" id="startDate" formControlName="startDate" class="form-control">
+        </app-form-field>
+
+        <div class="form-actions">
+            <app-button type="submit" [disabled]="form.invalid">Continuar</app-button>
+        </div>
+    </form>
+</div>
