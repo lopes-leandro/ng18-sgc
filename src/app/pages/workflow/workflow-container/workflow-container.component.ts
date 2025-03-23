@@ -11,6 +11,7 @@ import { NewContractComponent } from '../steps/new-contract/new-contract.compone
 import { CommercialConditionsComponent } from '../steps/commercial-conditions/commercial-conditions.component';
 import { DocumentationComponent } from '../steps/documentation/documentation.component';
 import { ItemSelectionComponent } from '../steps/item-selection/item-selection.component';
+import { ItemDetailsComponent } from '../steps/item-details/item-details.component';
 
 @Component({
   selector: 'app-workflow-container',
@@ -61,7 +62,7 @@ export class WorkflowContainerComponent implements OnInit {
       title: 'Incluir Items ao Contrato',
       steps: [
         {id: 'step-d', component: ItemSelectionComponent, label: 'Seleção de Items'},
-        {id: 'step-e', component: '', label: 'Detalhes dos Items'},
+        {id: 'step-e', component: ItemDetailsComponent, label: 'Detalhes dos Items'},
         {id: 'step-f', component: '', label: 'Condições de Entrega'},
         {id: 'summary', component: '', label: 'Resumo'},
       ]

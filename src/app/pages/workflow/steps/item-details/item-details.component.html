@@ -1,0 +1,74 @@
+<div class="step-container">
+<h3>Detalhes dos Itens</h3>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div formArrayName="items">
+        @for (itemGroup of itemsFormArray.controls; track $index) {
+            <div [formGroupName]="$index" class="item-detail-card">
+                <h4>{{ itemDetails[$index].name }}</h4>
+
+                <div class="item-form-grid">
+
+                    <app-form-field [label]="'Quantidade'" [id]="'quantity_' + $index" [control]="getQuantityControl($index)">
+                        <input 
+                            type="number" 
+                            [id]="'quantity_' + $index"
+                            formControlName="quantity"
+                            class="form-control"
+                            min="1"
+                            (input)="calculateTotals($index)"
+                            >
+                    </app-form-field>
+
+                    <app-form-field [label]="'Preço Unitário'" [id]="'unitPrice_' + $index" [control]="getUnitPriceControl($index)">
+                        <input 
+                            type="number"  
+                            [id]="'unitPrice_' + $index"
+                            formControlName="unitPrice"
+                            class="form-control"
+                            step="0.01"
+                            min="0"
+                            (input)="calculateTotals($index)">
+                    </app-form-field>
+
+                    <div class="form-feild">
+                        <label>Preço Total</label>
+                        <div class="total-price">
+                            {{getItemTotal($index) | currency:'BRL' }}
+                        </div>
+                    </div>
+                </div>
+
+                <app-form-field  [label]="'Observações'" [id]="'notes_' + $index" [control]="geNotesControl($index)">
+                    <textarea  [id]="'notes_' + $index" formControlName="notes" class="form-control" rows="2"></textarea>
+                </app-form-field>
+            </div>
+        } @empty {
+            <div class="empty-state">
+                <p>Nenhum item foi selecionado na etapa anterior.</p>
+            </div>
+        }
+    </div>
+
+    <div class="order-summary">
+        <h4>Resumo do Pedido</h4>
+        <div class="summary-row">
+            <span>Subtotal:</span>
+            <span>{{ getOrderSubTotal() | currency:'BRL' }}</span>
+        </div>
+        <div class="summary-row">
+            <span>Imposto (10%)</span>
+            <span>{{ getOrderTax() | currency:'BRL' }}</span>
+        </div>
+        <div class="summary-row total">
+            <span>Total:</span>
+            <span>{{ getOrderTotal() | currency:'BRL' }}</span>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <app-button type="button" variant="secondary" (onClick)="onBack()">Voltar</app-button>
+        <app-button type="submit" [disabled]="form.invalid">Continuar</app-button>
+    </div>
+</form>
+</div>
