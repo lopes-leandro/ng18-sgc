@@ -10,6 +10,7 @@ import { CardComponent } from '@shared/components/ui/card/card.component';
 import { NewContractComponent } from '../steps/new-contract/new-contract.component';
 import { CommercialConditionsComponent } from '../steps/commercial-conditions/commercial-conditions.component';
 import { DocumentationComponent } from '../steps/documentation/documentation.component';
+import { ItemSelectionComponent } from '../steps/item-selection/item-selection.component';
 
 @Component({
   selector: 'app-workflow-container',
@@ -59,7 +60,7 @@ export class WorkflowContainerComponent implements OnInit {
       type: WorkflowType.ADD_ITEMS,
       title: 'Incluir Items ao Contrato',
       steps: [
-        {id: 'step-d', component: '', label: 'Seleção de Items'},
+        {id: 'step-d', component: ItemSelectionComponent, label: 'Seleção de Items'},
         {id: 'step-e', component: '', label: 'Detalhes dos Items'},
         {id: 'step-f', component: '', label: 'Condições de Entrega'},
         {id: 'summary', component: '', label: 'Resumo'},

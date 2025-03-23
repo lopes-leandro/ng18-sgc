@@ -1,0 +1,47 @@
+<div class="step-container">
+    <h3>Seleção de Items</h3>
+
+    @if (data['contractName']) {
+        <div class="contract-info">
+            <p><strong>Contrato:</strong>{{data['contractName']}}</p>
+            <p><strong>ID:</strong>{{data['contractId']}}</p>
+        </div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="item-list">
+            <h4>Items Disponíveis</h4>
+
+            <div class="item-selection">
+                @for (item of availableItems; track item.id) {
+                    <div class="item-card" [class.selected]="selectedItems.includes(item.id)">
+                        <div class="item-header">
+                            <h5>{{ item.name }}</h5>
+                            <div class="item-price">{{ item.price | currency:'BRL' }}</div>
+                        </div>
+                        <p class="item-description">{{ item.description }}</p>
+                        <div class="item-actions">
+                            <app-button 
+                            type="button" 
+                            [variant]="selectedItems.includes(item.id) ? 'danger' : 'primary'"
+                            size="sm"
+                            (onClick)="toggleItemSelection(item.id)">
+                                {{selectedItems.includes(item.id) ? 'Remover' : 'Adicionar'}}
+                            </app-button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="selection-summary">
+            <p>
+                <strong>Items Selecionados: </strong> {{ selectedItems.length }}
+            </p>
+        </div>
+
+        <div class="form-actions">
+            <app-button type="submit" [disabled]="selectedItems.length === 0">Continuar</app-button>
+        </div>
+    </form>
+</div>
