@@ -1,0 +1,66 @@
+<div class="step-container">
+    <h3>Condições de Entrega</h3>
+
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <app-form-field label="Método de Entrega" id="deliveryMethod" [control]="deliveryMethodControl">
+            <select id="deliveryMethod" formControlName="deliveryMethod" class="form-control">
+                <option value="">Selecione</option>
+                <option value="download">Download Digital</option>
+                <option value="email">Envio por Email</option>
+                <option value="onsite">Entrega no Local</option>
+                <option value="shipping">Envio por Transportadora</option>
+            </select>
+        </app-form-field>
+
+        @if (shouldShowShippingAddress()) {
+        <div formGroupName="address" class="shipping-section">
+            <h4>Endereço de Entrega</h4>
+
+            <div class="address-grid">
+                <app-form-field label="CEP" id="zipCode" [control]="zipCodeControl">
+                    <input type="text" id="zipCode" formControlName="zipCode" class="form-control">
+                </app-form-field>
+
+                <app-form-field label="Endereço" id="street" [control]="streetControl">
+                    <input type="text" id="street" formControlName="street" class="form-control">
+                </app-form-field>
+
+                <app-form-field label="Número" id="number" [control]="numberControl">
+                    <input type="text" id="number" formControlName="number" class="form-control">
+                </app-form-field>
+
+                <app-form-field label="Complemento" id="complement" [control]="complementControl">
+                    <input type="text" id="complement" formControlName="complement" class="form-control">
+                </app-form-field>
+
+                <app-form-field label="Bairro" id="district" [control]="districtControl">
+                    <input type="text" id="district" formControlName="district" class="form-control">
+                </app-form-field>
+
+                <app-form-field label="Cidade" id="city" [control]="cityControl">
+                    <input type="text" id="city" formControlName="city" class="form-control">
+                </app-form-field>
+
+                <app-form-field label="Estado" id="state" [control]="stateControl">
+                    <input type="text" id="state" formControlName="state" class="form-control">
+                </app-form-field>
+            </div>
+        </div>
+        }
+
+        @if (shouldShowDeliveryDate()) {
+        <app-form-field label="Data de Enterga Prevista" id="deliveryDate" [control]="deliveryDateControl">
+            <input type="date" id="deliveryDate" formControlName="deliveryDate" class="form-control">
+        </app-form-field>
+        }
+
+        <app-form-field label="Observações de Entrega" id="deliveryNotes" [control]="deliveryNotesControl">
+            <textarea id="deliveryNotes" formControlName="deliveryNotes" class="form-control" rows="4"></textarea>
+        </app-form-field>
+
+        <div class="form-actions">
+            <app-button type="button" variant="secondary" (onClick)="onBack()">Voltar</app-button>
+            <app-button type="submit" [disabled]="form.invalid">Continuar</app-button>
+        </div>
+    </form>
+</div>

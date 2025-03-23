@@ -12,6 +12,7 @@ import { CommercialConditionsComponent } from '../steps/commercial-conditions/co
 import { DocumentationComponent } from '../steps/documentation/documentation.component';
 import { ItemSelectionComponent } from '../steps/item-selection/item-selection.component';
 import { ItemDetailsComponent } from '../steps/item-details/item-details.component';
+import { DeliveryConditionsComponent } from '../steps/delivery-conditions/delivery-conditions.component';
 
 @Component({
   selector: 'app-workflow-container',
@@ -63,7 +64,7 @@ export class WorkflowContainerComponent implements OnInit {
       steps: [
         {id: 'step-d', component: ItemSelectionComponent, label: 'Seleção de Items'},
         {id: 'step-e', component: ItemDetailsComponent, label: 'Detalhes dos Items'},
-        {id: 'step-f', component: '', label: 'Condições de Entrega'},
+        {id: 'step-f', component: DeliveryConditionsComponent, label: 'Condições de Entrega'},
         {id: 'summary', component: '', label: 'Resumo'},
       ]
     });
