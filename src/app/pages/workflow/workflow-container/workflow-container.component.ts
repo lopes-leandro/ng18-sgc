@@ -14,11 +14,17 @@ import { ItemSelectionComponent } from '../steps/item-selection/item-selection.c
 import { ItemDetailsComponent } from '../steps/item-details/item-details.component';
 import { DeliveryConditionsComponent } from '../steps/delivery-conditions/delivery-conditions.component';
 import { SummaryComponent } from '@shared/components/summary/summary.component';
+import { TabComponent } from '@shared/components/ui/tab/tab.component';
 
 @Component({
   selector: 'app-workflow-container',
   standalone: true,
-  imports: [CardComponent, ButtonComponent, NgComponentOutlet],
+  imports: [
+    CardComponent, 
+    ButtonComponent, 
+    NgComponentOutlet,
+    TabComponent
+  ],
   templateUrl: './workflow-container.component.html',
   styleUrl: './workflow-container.component.scss'
 })

@@ -2,6 +2,8 @@
     @if (workflow(); as currentWorkflow) {
     <div class="workflow-header">
         <h2>{{currentWorkflow.title}}</h2>
+        <app-tab [steps]="currentWorkflow.steps" [currentStep]="currentStepIndex()">
+        </app-tab>
     </div>
 
     <app-card>
@@ -16,23 +18,23 @@
 
     <div class="worflow-actions">
         @if (currentStepIndex() > 0) {
-            <app-button (onClick)="goBack()" variant="secondary">Voltar</app-button>
+        <app-button (onClick)="goBack()" variant="secondary">Voltar</app-button>
         }
 
-        @if (currentStepIndex() < currentWorkflow.steps.length - 1) {
-            <app-button (onClick)="next()" variant="primary">Proximo</app-button>
-        } @else {
+        @if (currentStepIndex() < currentWorkflow.steps.length - 1) { <app-button (onClick)="next()" variant="primary">
+            Proximo</app-button>
+            } @else {
             <app-button (onClick)="finishWorkflow()" variant="success">Finalizar</app-button>
-        }
+            }
 
-        <app-button (onClick)="cancelWorkflow()" variant="danger">Cancelar</app-button>
+            <app-button (onClick)="cancelWorkflow()" variant="danger">Cancelar</app-button>
     </div>
     } @else {
-        <app-card>
-            <p>Nenum fluxo de trabalho selecionado</p>
-            <app-button (onClick)="navigateToContracts()" variant="primary">
-                Voltar para Contratos
-            </app-button>
-        </app-card>
+    <app-card>
+        <p>Nenum fluxo de trabalho selecionado</p>
+        <app-button (onClick)="navigateToContracts()" variant="primary">
+            Voltar para Contratos
+        </app-button>
+    </app-card>
     }
 </div>

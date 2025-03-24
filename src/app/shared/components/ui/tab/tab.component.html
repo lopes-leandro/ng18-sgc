@@ -1,0 +1,10 @@
+<div class="step-navigator">
+    @for (step of steps; track step.id; let i = $index) {
+    <div class="step-indicator" [class.active]="currentStep === i" [class.completed]="currentStep > i">
+        {{ step.label }}
+    </div>
+    @if (i < steps.length - 1) { <div class="step-divider">
+</div>
+}
+}
+</div>
