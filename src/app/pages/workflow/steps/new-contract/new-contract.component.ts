@@ -17,6 +17,7 @@ import { FormFieldComponent } from '@shared/components/ui/form-field/form-field.
 export class NewContractComponent implements OnInit {
   data = input<Record<string, any>>({});
   onComplete = input<(data: Record<string, any>) => void>();
+  onBack = input<() => void>();
   
   form!: FormGroup;
   

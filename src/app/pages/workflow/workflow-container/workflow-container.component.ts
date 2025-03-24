@@ -13,6 +13,7 @@ import { DocumentationComponent } from '../steps/documentation/documentation.com
 import { ItemSelectionComponent } from '../steps/item-selection/item-selection.component';
 import { ItemDetailsComponent } from '../steps/item-details/item-details.component';
 import { DeliveryConditionsComponent } from '../steps/delivery-conditions/delivery-conditions.component';
+import { SummaryComponent } from '@shared/components/summary/summary.component';
 
 @Component({
   selector: 'app-workflow-container',
@@ -53,7 +54,7 @@ export class WorkflowContainerComponent implements OnInit {
         {id: 'step-a', component: NewContractComponent, label: 'Informações Básicas'},
         {id: 'step-b', component: CommercialConditionsComponent, label: 'Condições Contratuais'},
         {id: 'step-c', component: DocumentationComponent, label: 'Documentação'},
-        {id: 'summary', component: '', label: 'Resumo'},
+        {id: 'summary', component: SummaryComponent, label: 'Resumo'},
       ]
     });
 
@@ -65,7 +66,7 @@ export class WorkflowContainerComponent implements OnInit {
         {id: 'step-d', component: ItemSelectionComponent, label: 'Seleção de Items'},
         {id: 'step-e', component: ItemDetailsComponent, label: 'Detalhes dos Items'},
         {id: 'step-f', component: DeliveryConditionsComponent, label: 'Condições de Entrega'},
-        {id: 'summary', component: '', label: 'Resumo'},
+        {id: 'summary', component: SummaryComponent, label: 'Resumo'},
       ]
     });
   }

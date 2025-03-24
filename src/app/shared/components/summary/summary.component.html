@@ -1,0 +1,17 @@
+<app-card title="Resumo">
+    <div class="summary-container">
+        @for (section of sections; track section.title) {
+        <div class="summary-section">
+            <h4>{{ section.title }}</h4>
+            <div class="summary-items">
+                @for (item of section.items; track item.label) {
+                <div class="summary-item">
+                    <span class="label">{{ item.label }}:</span>
+                    <span class="value">{{ item.value }}</span>
+                </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</app-card>
